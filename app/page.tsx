@@ -14,6 +14,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useCreatePhrasePair } from '@/utils/react-query-hooks';
 import { useCallback } from 'react';
+import { toast } from 'react-hot-toast';
 
 const formSchema = z.object({
 	inputOne: z.string().min(1).max(20),
@@ -48,19 +49,25 @@ export default function Index() {
 
 	async function onSubmit(values: z.infer<typeof formSchema>) {
 		// fetch the data from the api here
-		const relavance = await fetch('/api/get-connection-score', {
+		const connectionScoreResponse = await fetch('/api/get-connection-score', {
 			method: 'POST',
-			body: JSON.stringify({
-				phraseOne: values.inputOne,
-				phraseTwo: values.inputTwo,
-			}),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ phraseOne: values.inputOne, phraseTwo: values.inputTwo }),
 		});
-		const data = await relavance.json();
-		console.log(data);
+		const connectionScore = await connectionScoreResponse.json();
+		//turn connection score into a number
+
+		console.log(typeof connectionScore, 'connectionScore');
+		if (connectionScore > 10) {
+			toast.error('Connection score is too low');
+			return;
+		}
 
 		const phraseOne = values.inputOne;
 		const phraseTwo = values.inputTwo;
-		mutateCreatePhrasePair({ phraseOne, phraseTwo, relevance: 0 });
+		mutateCreatePhrasePair({ phraseOne, phraseTwo, relevance: connectionScore });
 	}
 
 	return (
