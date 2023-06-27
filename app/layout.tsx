@@ -4,11 +4,16 @@ import AppProviders from './AppProviders';
 import Header from '@/components/Header';
 import { Metadata } from 'next';
 import { Gradient } from '@/utils/gradient';
+import { Comfortaa } from 'next/font/google';
 
 const siteConfig = {
 	title: 'The Sound of Blue',
 	description: `The Sound of Blue" is a captivating exploration into the complex tapestry of human thought and creativity. This innovative platform invites users to propose two seemingly unrelated phrases, and our AI calculates a 'relevance score' representing its interpretation of their connection. Phrases with the lowest scores — those connections most elusive to AI but meaningful to us — are compiled for users to upvote or downvote, democratically surfacing connections uniquely human. It's a fascinating blend of cognitive science, AI capabilities, and community engagement, offering a novel perspective on the kaleidoscopic ways we, as humans, perceive and connect ideas.`,
 };
+
+const comfortaa = Comfortaa({
+	subsets: ['latin-ext'],
+});
 
 export const metadata: Metadata = {
 	title: 'The Sound of Blue',
@@ -55,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<body>
 					{/* <Header /> */}
 
-					<main className="min-h-screen  flex flex-col items-center">{children}</main>
+					<main className={`min-h-screen  flex flex-col items-center ${comfortaa.className}`}>{children}</main>
 					<Toaster />
 				</body>
 			</AppProviders>

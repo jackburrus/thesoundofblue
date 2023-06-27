@@ -13,15 +13,25 @@ import { useCompletion } from 'ai/react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useCreatePhrasePair } from '@/utils/react-query-hooks';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Gradient } from '@/utils/gradient';
 import Header from '@/components/Header';
+import { BadgeCheck, XCircle } from 'lucide-react';
 
 const formSchema = z.object({
 	inputOne: z.string().min(1).max(20),
 	inputTwo: z.string().min(1).max(20),
 });
+
+const WELCOME_MESSAGE = `Welcome! This is a place where human imagination thrives, exploring connections that AI can't grasp. You start by
+entering two words or phrases. If our AI doesn't see a clear link between them – but you do – your unique pair
+will join our growing list of 'human-only' connections. Then, everyone can vote on these pairs,
+highlighting the creative insights that make us uniquely human.`;
+
+const REJECTION_MESSAGE = `Thank you for your submission! However, our AI found a stronger connection between your phrases than expected. The purpose of 'The Sound of Blue' is to celebrate the unique and abstract connections that humans make - the ones that AI can't quite understand. Please try again with another pair of words or phrases. Let's uncover more connections that truly highlight the power of human imagination!`;
+
+const CONFIRMATION_MESSAGE = `Great job! Your pair of words or phrases has stumped our AI - it couldn't find a strong connection. This means your unique insight has been added to our list! Now, users from all over can vote on your connection, letting us together uncover the beautiful intricacies of human thought. Thanks for contributing to 'The Sound of Blue' and keep those creative connections coming!`;
 
 export default function Index() {
 	const gradient = new Gradient();
@@ -29,6 +39,8 @@ export default function Index() {
 		gradient.initGradient('#gradient-canvas');
 	}, []);
 	const { mutateAsync: mutateCreatePhrasePair } = useCreatePhrasePair();
+	const [activeMessage, setActiveMessage] = useState(WELCOME_MESSAGE);
+	// const [activeMessage, setActiveMessage] = useState(CONFIRMATION_MESSAGE);
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -36,22 +48,6 @@ export default function Index() {
 			inputTwo: '',
 		},
 	});
-	const { handleSubmit, completion, isLoading, complete } = useCompletion({
-		api: '/api/get-connection-score',
-		body: { phraseOne: form.getValues('inputOne'), phraseTwo: form.getValues('inputTwo') },
-	});
-
-	const getConnectionScore = useCallback(
-		async (c: string) => {
-			const completion = await complete(c);
-			if (!completion) throw new Error('Failed to get connection score');
-			const relevance = JSON.parse(completion);
-			console.log(relevance, 'relavance');
-			// you should more validation here to make sure the response is valid
-			// if (typos?.length && !window.confirm('Typos found… continue?')) return
-		},
-		[complete],
-	);
 
 	async function onSubmit(values: z.infer<typeof formSchema>) {
 		// fetch the data from the api here
@@ -65,12 +61,12 @@ export default function Index() {
 		const connectionScore = await connectionScoreResponse.json();
 		//turn connection score into a number
 
-		console.log(connectionScore, 'connectionScore');
 		if (connectionScore > 10) {
-			toast.error('Connection score is too high');
+			// toast.error('Connection score is too high');
+			setActiveMessage(REJECTION_MESSAGE);
 			return;
 		}
-
+		setActiveMessage(CONFIRMATION_MESSAGE);
 		const phraseOne = values.inputOne;
 		const phraseTwo = values.inputTwo;
 		mutateCreatePhrasePair({ phraseOne, phraseTwo, relevance: connectionScore });
@@ -83,6 +79,15 @@ export default function Index() {
 
 			<Form {...form}>
 				<form className="items-center flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
+					<div className="bg-white items-center flex flex-col shadow-md mx-4 mt-10 md:max-w-xl rounded-md p-10">
+						{activeMessage === CONFIRMATION_MESSAGE && <BadgeCheck className="mb-5" size={36} color={'#4caf50'} />}
+						<p className={`text-xs ${activeMessage === REJECTION_MESSAGE && 'text-red-400'} `}>{activeMessage}</p>
+						{activeMessage === CONFIRMATION_MESSAGE && (
+							<Link className="mt-5" href="/leaderboard">
+								<Button className="text-xs ">Check out the leaderboard!</Button>
+							</Link>
+						)}
+					</div>
 					<div className="flex flex-col md:flex-row items-center w-full justify-evenly  ">
 						<FormField
 							control={form.control}

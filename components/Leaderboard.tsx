@@ -5,6 +5,7 @@ import React from 'react';
 import VoteButtons from '@/components/VoteButtons';
 import { createColumnHelper, ColumnResizeMode } from '@tanstack/react-table';
 import { PhrasePairRow, PhrasePairTable } from '@/utils/types';
+import Header from './Header';
 
 const columnHelper = createColumnHelper<PhrasePairRow>();
 
