@@ -37,6 +37,7 @@ export const columns = [
 		header: 'Created',
 		meta: {
 			align: 'center',
+			// add a class to hide the column on smaller screens
 		},
 		cell: (info) => {
 			const date = new Date(info.getValue());
@@ -46,7 +47,12 @@ export const columns = [
 ];
 
 export default function LeaderBoardTable({ data }: { data: PhrasePairRow[] }) {
-	const tableInstance = useReactTable({ columns, data, getCoreRowModel: getCoreRowModel() });
+	const isMobile = window.innerWidth < 768;
+	const tableInstance = useReactTable({
+		columns,
+		data,
+		getCoreRowModel: getCoreRowModel(),
+	});
 	const gradient = new Gradient();
 	useEffect(() => {
 		gradient.initGradient('#gradient-canvas');
@@ -54,7 +60,7 @@ export default function LeaderBoardTable({ data }: { data: PhrasePairRow[] }) {
 	return (
 		<div className=" w-full   flex border h-screen items-center justify-center ">
 			<canvas className="absolute w-full h-screen z-[-1]" id="gradient-canvas" data-transition-in />
-			<div className=" max-h-[800px] overflow-scroll shadow-md rounded-md bg-white">
+			<div className=" max-h-[500px] md:max-h-[800px] overflow-scroll shadow-md rounded-md bg-white">
 				<table className=" ">
 					<thead className="">
 						{tableInstance.getHeaderGroups().map((headerGroup) => (
