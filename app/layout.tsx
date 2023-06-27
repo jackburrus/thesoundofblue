@@ -3,6 +3,7 @@ import './globals.css';
 import AppProviders from './AppProviders';
 import Header from '@/components/Header';
 import { Metadata } from 'next';
+import { Gradient } from '@/utils/gradient';
 
 const siteConfig = {
 	title: 'The Sound of Blue',
@@ -52,7 +53,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang="en">
 			<AppProviders>
 				<body>
-					<Header />
+					{/* <Header /> */}
+
 					<main className="min-h-screen  flex flex-col items-center">{children}</main>
 					<Toaster />
 				</body>

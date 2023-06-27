@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Header() {
 	return (
-		<header className=" w-full py-2 md:p-6 flex justify-between items-center">
+		<header className=" fixed text-white top-0 w-full py-2 md:p-6 bg-transparent flex justify-between items-center">
 			<Link href="/" className="z-20 text-sm sm:mb-0">
 				The Sound of Blue
 			</Link>

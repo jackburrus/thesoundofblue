@@ -13,8 +13,10 @@ import { useCompletion } from 'ai/react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useCreatePhrasePair } from '@/utils/react-query-hooks';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
+import { Gradient } from '@/utils/gradient';
+import Header from '@/components/Header';
 
 const formSchema = z.object({
 	inputOne: z.string().min(1).max(20),
@@ -22,6 +24,10 @@ const formSchema = z.object({
 });
 
 export default function Index() {
+	const gradient = new Gradient();
+	useEffect(() => {
+		gradient.initGradient('#gradient-canvas');
+	}, []);
 	const { mutateAsync: mutateCreatePhrasePair } = useCreatePhrasePair();
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -71,7 +77,10 @@ export default function Index() {
 	}
 
 	return (
-		<div className="flex-1 flex  flex-col justify-center   w-full mt-24">
+		<div className="flex-1 flex relative  flex-col justify-center   w-full ">
+			<Header />
+			<canvas className="absolute w-full h-screen z-[-1]" id="gradient-canvas" data-transition-in />
+
 			<Form {...form}>
 				<form className="items-center flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
 					<div className="flex flex-col md:flex-row items-center w-full justify-evenly  ">
@@ -101,7 +110,11 @@ export default function Index() {
 						/>
 					</div>
 
-					<Button className="mt-10" type="submit">
+					<Button
+						variant={'default'}
+						className="bg-green-100 px-10 mb-1 mt-10 flex justify-center items-center text-[8px] font-bold py-1  rounded text-green-600 hover:text-white hover:bg-green-300 transition-all duration-200 ease-in-out"
+						type="submit"
+					>
 						Submit
 					</Button>
 				</form>
