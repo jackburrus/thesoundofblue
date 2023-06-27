@@ -20,7 +20,7 @@ export default function VoteButtons({ row }: { row: Row<PhrasePairRow> }) {
 	const downvotes = voteCount?.filter((vote) => vote.voteType === 'DOWNVOTE').length;
 
 	return (
-		<div className="flex flex-col mr-10 my-2">
+		<div className="flex flex-col ml-4 mr-10 my-2">
 			<button
 				onClick={() => handleVote('UPVOTE')}
 				className="bg-green-100 mb-1 flex justify-center items-center text-[8px] font-bold py-1 px-4 rounded text-green-500"

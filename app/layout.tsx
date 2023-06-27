@@ -58,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang="en">
 			<AppProviders>
 				<body>
-					{/* <Header /> */}
+					<Header />
 
 					<main className={`min-h-screen  flex flex-col items-center ${comfortaa.className}`}>{children}</main>
 					<Toaster />

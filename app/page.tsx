@@ -74,7 +74,7 @@ export default function Index() {
 
 	return (
 		<div className="flex-1 flex relative  flex-col justify-center   w-full ">
-			<Header />
+			{/* <Header /> */}
 			<canvas className="absolute w-full h-screen z-[-1]" id="gradient-canvas" data-transition-in />
 
 			<Form {...form}>
