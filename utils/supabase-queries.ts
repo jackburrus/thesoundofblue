@@ -23,3 +23,11 @@ export async function createPhrasePair(
 	}
 	return data;
 }
+
+export async function getPhrasePairs(supabase: AppSupabaseClient) {
+	const { data, error } = await supabase.from('phrase_pairs').select('*');
+	if (error) {
+		throw error;
+	}
+	return data;
+}

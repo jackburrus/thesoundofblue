@@ -59,9 +59,9 @@ export default function Index() {
 		const connectionScore = await connectionScoreResponse.json();
 		//turn connection score into a number
 
-		console.log(typeof connectionScore, 'connectionScore');
+		console.log(connectionScore, 'connectionScore');
 		if (connectionScore > 10) {
-			toast.error('Connection score is too low');
+			toast.error('Connection score is too high');
 			return;
 		}
 
