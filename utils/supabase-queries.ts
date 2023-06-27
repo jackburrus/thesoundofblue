@@ -58,3 +58,11 @@ export async function getVotes(supabase: AppSupabaseClient, phrasePairId: string
 	}
 	return data;
 }
+
+export async function getAllVotes(supabase: AppSupabaseClient) {
+	const { data, error } = await supabase.from('vote').select('*');
+	if (error) {
+		throw error;
+	}
+	return data;
+}

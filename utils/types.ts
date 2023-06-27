@@ -13,3 +13,5 @@ export type PhrasePairRow = {
 	createdAt: string;
 	updatedAt: string;
 };
+
+export type VoteTable = Table<'vote'>;
