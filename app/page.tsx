@@ -79,9 +79,11 @@ export default function Index() {
 
 			<Form {...form}>
 				<form className="items-center flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
-					<div className="bg-white items-center flex flex-col shadow-md mx-4 mt-10 md:max-w-xl rounded-md p-10">
+					<div className="bg-white items-center flex flex-col shadow-md mx-4 md:max-w-2xl max-h-44 md:max-h-64  rounded-md p-5 md:p-8">
 						{activeMessage === CONFIRMATION_MESSAGE && <BadgeCheck className="mb-5" size={36} color={'#4caf50'} />}
-						<p className={`text-xs ${activeMessage === REJECTION_MESSAGE && 'text-red-400'} `}>{activeMessage}</p>
+						<p className={`text-xs md:text-base ${activeMessage === REJECTION_MESSAGE && 'text-red-400'} `}>
+							{activeMessage}
+						</p>
 						{activeMessage === CONFIRMATION_MESSAGE && (
 							<Link className="mt-5" href="/leaderboard">
 								<Button className="text-xs ">Check out the leaderboard!</Button>
@@ -96,7 +98,7 @@ export default function Index() {
 								<FormItem>
 									<FormControl>
 										<Input
-											className="m-5 text-white text-4xl md:m-0 bg-transparent border-b-2 placeholder:text-white  h-40 w-60"
+											className=" text-white text-4xl  bg-transparent border-b-2 placeholder:text-white  h-40 w-60"
 											{...field}
 											placeholder="Input One"
 										/>
@@ -112,7 +114,7 @@ export default function Index() {
 								<FormItem>
 									<FormControl>
 										<Input
-											className="m-5 text-white text-4xl md:m-0 bg-transparent border-b-2 placeholder:text-white  h-40 w-60"
+											className=" text-white text-4xl md:m-0 bg-transparent border-b-2 placeholder:text-white  h-40 w-60"
 											{...field}
 											placeholder="Input Two"
 										/>

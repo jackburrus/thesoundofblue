@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import { Metadata } from 'next';
 import { Gradient } from '@/utils/gradient';
 import { Comfortaa } from 'next/font/google';
+import Footer from '@/components/Footer';
 
 const siteConfig = {
 	title: 'The Sound of Blue',
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 					<main className={`min-h-screen  flex flex-col items-center ${comfortaa.className}`}>{children}</main>
 					<Toaster />
+					<Footer />
 				</body>
 			</AppProviders>
 		</html>
