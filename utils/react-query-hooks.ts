@@ -1,5 +1,5 @@
 import { useMutation } from 'react-query';
-import { createPhrasePair } from './supabase-queries';
+import { createPhrasePair, createVote } from './supabase-queries';
 import supabaseClient from './supabase-browser';
 import { toast } from 'react-hot-toast';
 export const useCreatePhrasePair = () => {
@@ -10,6 +10,22 @@ export const useCreatePhrasePair = () => {
 		{
 			onSuccess: () => {
 				toast.success('Phrase pair created!');
+			},
+			onError: (error: Error) => {
+				toast.error(error.message);
+			},
+		},
+	);
+};
+
+export const useCreateVote = () => {
+	return useMutation(
+		async ({ phrasePairId, voteType }: { phrasePairId: string; voteType: 'UPVOTE' | 'DOWNVOTE' }) => {
+			return createVote(supabaseClient, phrasePairId, voteType);
+		},
+		{
+			onSuccess: () => {
+				toast.success('Vote created!');
 			},
 			onError: (error: Error) => {
 				toast.error(error.message);

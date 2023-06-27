@@ -27,8 +27,14 @@ model phrase_pairs {
 
 model vote {
   id           String       @id
+  voteType     vote_type
   createdAt    DateTime     @default(now())
   updatedAt    DateTime     @updatedAt
   phrasePair   phrase_pairs @relation(fields: [phrasePairId], references: [id])
   phrasePairId String
+}
+
+enum vote_type {
+  UPVOTE
+  DOWNVOTE
 }

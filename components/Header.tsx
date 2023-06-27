@@ -7,6 +7,9 @@ export default function Header() {
 				The Sound of Blue
 			</Link>
 			<div className="flex space-x-4">
+				<Link href="/about" className="z-20 text-sm sm:mb-0">
+					About
+				</Link>
 				<Link href="/" className="z-20 text-sm sm:mb-0">
 					Submit
 				</Link>

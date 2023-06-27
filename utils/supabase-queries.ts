@@ -31,3 +31,22 @@ export async function getPhrasePairs(supabase: AppSupabaseClient) {
 	}
 	return data;
 }
+
+type VoteType = 'UPVOTE' | 'DOWNVOTE';
+
+export async function createVote(supabase: AppSupabaseClient, phrasePairId: string, voteType: VoteType) {
+	const now = new Date();
+	const { data, error } = await supabase.from('vote').insert([
+		{
+			id: uuidv4(),
+			createdAt: now.toISOString(),
+			updatedAt: now.toISOString(),
+			phrasePairId,
+			voteType,
+		},
+	]);
+	if (error) {
+		throw error;
+	}
+	return data;
+}

@@ -57,18 +57,21 @@ export interface Database {
           id: string
           phrasePairId: string
           updatedAt: string
+          voteType: Database["public"]["Enums"]["vote_type"]
         }
         Insert: {
           createdAt?: string
           id: string
           phrasePairId: string
           updatedAt: string
+          voteType: Database["public"]["Enums"]["vote_type"]
         }
         Update: {
           createdAt?: string
           id?: string
           phrasePairId?: string
           updatedAt?: string
+          voteType?: Database["public"]["Enums"]["vote_type"]
         }
         Relationships: [
           {
@@ -87,7 +90,7 @@ export interface Database {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      vote_type: "UPVOTE" | "DOWNVOTE"
     }
     CompositeTypes: {
       [_ in never]: never

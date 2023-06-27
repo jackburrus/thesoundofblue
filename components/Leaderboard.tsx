@@ -1,9 +1,27 @@
 'use client';
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 import React from 'react';
-import { columns } from '@/utils/table-columns';
-export default function LeaderBoardTable({ defaultData }) {
-	const [data, setData] = React.useState(() => [...defaultData]);
+
+import VoteButtons from '@/components/VoteButtons';
+import { createColumnHelper } from '@tanstack/react-table';
+import { PhrasePairRow, PhrasePairTable } from '@/utils/types';
+
+const columnHelper = createColumnHelper<PhrasePairRow>();
+
+export const columns = [
+	columnHelper.display({
+		id: 'voteButtons',
+		cell: (props) => <VoteButtons row={props.row} />,
+	}),
+	columnHelper.accessor('phraseOne', {
+		cell: (info) => info.getValue(),
+	}),
+	columnHelper.accessor('phraseTwo', {
+		cell: (info) => info.getValue(),
+	}),
+];
+
+export default function LeaderBoardTable({ data }: { data: PhrasePairRow[] }) {
 	const tableInstance = useReactTable({ columns, data, getCoreRowModel: getCoreRowModel() });
 	return (
 		<div className="w-full">

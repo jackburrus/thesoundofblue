@@ -6,6 +6,6 @@ import { cookies } from 'next/headers';
 export default async function LeaderBoard() {
 	const supabase = createServerComponentClient({ cookies });
 	const data = await getPhrasePairs(supabase);
-	console.log(data, 'data');
-	return <LeaderBoardTable defaultData={data} />;
+
+	return <LeaderBoardTable data={data} />;
 }
