@@ -1,5 +1,5 @@
-import { useMutation } from 'react-query';
-import { createPhrasePair, createVote } from './supabase-queries';
+import { useMutation, useQuery } from 'react-query';
+import { createPhrasePair, createVote, getVotes } from './supabase-queries';
 import supabaseClient from './supabase-browser';
 import { toast } from 'react-hot-toast';
 export const useCreatePhrasePair = () => {
@@ -32,4 +32,8 @@ export const useCreateVote = () => {
 			},
 		},
 	);
+};
+
+export const useGetVotes = (phrasePairId: string) => {
+	return useQuery(['votes', phrasePairId], () => getVotes(supabaseClient, phrasePairId));
 };
