@@ -38,13 +38,13 @@ export const metadata: Metadata = {
 		card: 'summary_large_image',
 		title: 'The Sound of Blue',
 		description: siteConfig.description,
-		images: [], //TODO CREATE OPEN GRAPH IMAGES
+		images: ['/logos/128.png'],
 		creator: '@jackburrus',
 	},
 	icons: {
-		icon: '/favicon.ico',
-		shortcut: '/favicon-16x16.png',
-		apple: '/apple-touch-icon.png',
+		icon: '/logos/favicon.ico',
+		shortcut: '/logos/16.png',
+		apple: '/logos/16.png',
 	},
 };
 

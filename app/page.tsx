@@ -90,7 +90,11 @@ export default function Index() {
 							render={({ field }) => (
 								<FormItem>
 									<FormControl>
-										<Input className="m-5 md:m-0   h-40 w-60" {...field} placeholder="Input One" />
+										<Input
+											className="m-5 text-white text-4xl md:m-0 bg-transparent border-b-2 placeholder:text-white  h-40 w-60"
+											{...field}
+											placeholder="Input One"
+										/>
 									</FormControl>
 									<FormMessage />
 								</FormItem>
@@ -102,7 +106,11 @@ export default function Index() {
 							render={({ field }) => (
 								<FormItem>
 									<FormControl>
-										<Input className="m-5 md:m-0 h-40 w-60" {...field} placeholder="Input Two" />
+										<Input
+											className="m-5 text-white text-4xl md:m-0 bg-transparent border-b-2 placeholder:text-white  h-40 w-60"
+											{...field}
+											placeholder="Input Two"
+										/>
 									</FormControl>
 									<FormMessage />
 								</FormItem>
@@ -112,7 +120,7 @@ export default function Index() {
 
 					<Button
 						variant={'default'}
-						className="bg-green-100 px-10 mb-1 mt-10 flex justify-center items-center text-[8px] font-bold py-1  rounded text-green-600 hover:text-white hover:bg-green-300 transition-all duration-200 ease-in-out"
+						className="bg-blue-100 px-10 mb-1 mt-10 flex justify-center items-center text-[8px] font-bold py-1  rounded text-blue-300 hover:text-white hover:bg-blue-300 transition-all duration-200 ease-in-out"
 						type="submit"
 					>
 						Submit
