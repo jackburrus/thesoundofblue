@@ -50,3 +50,11 @@ export async function createVote(supabase: AppSupabaseClient, phrasePairId: stri
 	}
 	return data;
 }
+
+export async function getVotes(supabase: AppSupabaseClient, phrasePairId: string) {
+	const { data, error } = await supabase.from('vote').select('*').eq('phrasePairId', phrasePairId);
+	if (error) {
+		throw error;
+	}
+	return data;
+}
