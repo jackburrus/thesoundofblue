@@ -9,9 +9,11 @@ import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { useCompletion } from 'ai/react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useCreatePhrasePair } from '@/utils/react-query-hooks';
+import { useCallback } from 'react';
 
 const formSchema = z.object({
 	inputOne: z.string().min(1).max(20),
@@ -27,28 +29,52 @@ export default function Index() {
 			inputTwo: '',
 		},
 	});
+	const { handleSubmit, completion, isLoading, complete } = useCompletion({
+		api: '/api/get-connection-score',
+		body: { phraseOne: form.getValues('inputOne'), phraseTwo: form.getValues('inputTwo') },
+	});
 
-	function onSubmit(values: z.infer<typeof formSchema>) {
+	const getConnectionScore = useCallback(
+		async (c: string) => {
+			const completion = await complete(c);
+			if (!completion) throw new Error('Failed to get connection score');
+			const relevance = JSON.parse(completion);
+			console.log(relevance, 'relavance');
+			// you should more validation here to make sure the response is valid
+			// if (typos?.length && !window.confirm('Typos found… continue?')) return
+		},
+		[complete],
+	);
+
+	async function onSubmit(values: z.infer<typeof formSchema>) {
 		// fetch the data from the api here
-		const relevance = 0; //TODO GET RELEVANCE
-		console.log(values);
+		const relavance = await fetch('/api/get-connection-score', {
+			method: 'POST',
+			body: JSON.stringify({
+				phraseOne: values.inputOne,
+				phraseTwo: values.inputTwo,
+			}),
+		});
+		const data = await relavance.json();
+		console.log(data);
+
 		const phraseOne = values.inputOne;
 		const phraseTwo = values.inputTwo;
 		mutateCreatePhrasePair({ phraseOne, phraseTwo, relevance: 0 });
 	}
 
 	return (
-		<div className="flex-1 flex border border-cyan-500 flex-col justify-center   w-full mt-24">
+		<div className="flex-1 flex  flex-col justify-center   w-full mt-24">
 			<Form {...form}>
 				<form className="items-center flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
-					<div className="flex flex-row border border-green-500 w-full justify-evenly  ">
+					<div className="flex flex-col md:flex-row items-center w-full justify-evenly  ">
 						<FormField
 							control={form.control}
 							name="inputOne"
 							render={({ field }) => (
 								<FormItem>
 									<FormControl>
-										<Input className="   h-40 w-60" {...field} placeholder="Input One" />
+										<Input className="m-5 md:m-0   h-40 w-60" {...field} placeholder="Input One" />
 									</FormControl>
 									<FormMessage />
 								</FormItem>
@@ -60,7 +86,7 @@ export default function Index() {
 							render={({ field }) => (
 								<FormItem>
 									<FormControl>
-										<Input className="h-40 w-60" {...field} placeholder="Input Two" />
+										<Input className="m-5 md:m-0 h-40 w-60" {...field} placeholder="Input Two" />
 									</FormControl>
 									<FormMessage />
 								</FormItem>
@@ -68,7 +94,9 @@ export default function Index() {
 						/>
 					</div>
 
-					<Button type="submit">Submit</Button>
+					<Button className="mt-10" type="submit">
+						Submit
+					</Button>
 				</form>
 			</Form>
 		</div>

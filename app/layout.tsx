@@ -1,6 +1,7 @@
 import { Toaster } from 'react-hot-toast';
 import './globals.css';
 import AppProviders from './AppProviders';
+import Header from '@/components/Header';
 
 export const metadata = {
 	title: 'Create Next App',
@@ -12,6 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang="en">
 			<AppProviders>
 				<body>
+					<Header />
 					<main className="min-h-screen  flex flex-col items-center">{children}</main>
 					<Toaster />
 				</body>
