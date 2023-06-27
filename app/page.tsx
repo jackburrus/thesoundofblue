@@ -38,7 +38,7 @@ export default function Index() {
 	useEffect(() => {
 		gradient.initGradient('#gradient-canvas');
 	}, []);
-	const { mutateAsync: mutateCreatePhrasePair } = useCreatePhrasePair();
+	const { mutateAsync: mutateCreatePhrasePair, isLoading } = useCreatePhrasePair();
 	const [activeMessage, setActiveMessage] = useState(WELCOME_MESSAGE);
 	// const [activeMessage, setActiveMessage] = useState(CONFIRMATION_MESSAGE);
 	const form = useForm<z.infer<typeof formSchema>>({
@@ -127,8 +127,13 @@ export default function Index() {
 						variant={'default'}
 						className="bg-blue-100 px-10 mb-1 mt-10 flex justify-center items-center text-[8px] font-bold py-1  rounded text-blue-300 hover:text-white hover:bg-blue-300 transition-all duration-200 ease-in-out"
 						type="submit"
+						disabled={isLoading}
 					>
-						Submit
+						{isLoading ? (
+							<div className="w-6 h-6 rounded-full animate-spin border-y-2 border-solid border-blue-200 border-t-transparent shadow-md" />
+						) : (
+							'Submit'
+						)}
 					</Button>
 				</form>
 			</Form>
