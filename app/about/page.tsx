@@ -51,13 +51,23 @@ export default function About() {
 						</li>
 					</ul>
 				</p>
-				<h1 className="text-xl font-bold w-full justify-start">Credits</h1>
+				<h1 className="text-xl font-bold w-full justify-start">Prompt</h1>
+				<p className="mt-2 text-sm">
+					The prompt used to generate the relevancy score is as follows: "Analyze the connection between the phrases
+					[phraseOne] and [phraseTwo]. Describe their relation on a scale from 1 (no relation) to 100 (closely related). Do
+					not provide any other text in your response, only the number."
+				</p>
+				<h1 className="text-xl font-bold w-full justify-start mt-2">Credits</h1>
 				<p className="mt-2 text-sm">
 					This project was created by{' '}
 					<a href="https://www.twitter.com/jackburrus" target="_blank" className="underline">
 						Jack Burrus
 					</a>{' '}
-					as part of his #BuiltInADay series.
+					as part of his #BuiltInADay series. It is open source and available on{' '}
+					<a href="https://github.com/jackburrus/thesoundofblue" target="_blank" className="underline">
+						Github
+					</a>
+					.
 				</p>
 			</div>
 		</div>
