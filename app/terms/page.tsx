@@ -88,6 +88,29 @@ export default function TermsPage() {
 				completeness, and usefulness of the information. Feel free to reach out to our team if you ever think we can help or
 				answer any of your questions.
 			</p>
+			<p className="mb-4">
+				User Content Responsibility By using "The Sound of Blue", you acknowledge and agree that you are solely responsible
+				for all the content that you submit, post, or otherwise make available via our platform, including but not limited
+				to the phrases you submit ("User Content"). You represent and warrant that you have all necessary rights to the User
+				Content and that your User Content does not infringe, violate, or misappropriate any third-party rights, including
+				any copyright, trademark, patent, trade secret, moral rights, privacy rights, rights of publicity, or any other
+				intellectual property or proprietary rights. You agree not to submit, upload, post, display, or transmit any User
+				Content that: Is illegal, harmful, threatening, abusive, harassing, defamatory, libelous, invasive of another's
+				privacy, or is harmful to minors in any way; Is pornographic or depicts a human being engaged in actual sexual
+				conduct; Harasses, degrades, intimidates or is hateful toward an individual or group of individuals on the basis of
+				religion, gender, sexual orientation, race, ethnicity, age, or disability; Impersonates any person or entity,
+				including, but not limited to, a "The Sound of Blue" employee, or falsely states or otherwise misrepresents your
+				affiliation with a person or entity. You understand and agree that "The Sound of Blue" may, but is not obligated to,
+				review and delete or remove any User Content, in its sole discretion, for any reason or no reason, including User
+				Content that, in the sole judgment of "The Sound of Blue", violates these Terms, might be offensive or illegal, or
+				might violate the rights of, harm, or threaten the safety of users or others. You understand and acknowledge that
+				you may be exposed to User Content that is inaccurate, offensive, indecent, or objectionable, and you agree to
+				waive, and hereby do waive, any legal or equitable rights or remedies you have or may have against "The Sound of
+				Blue" with respect to such User Content. "The Sound of Blue" reserves the right to cooperate fully with governmental
+				authorities, private investigators and/or injured third parties in the investigation of any suspected criminal or
+				civil wrongdoing. Remember, while we encourage creativity and engagement, we also care about the safety and
+				well-being of all of our users. We expect everyone to show respect and courtesy to other users at all times.
+			</p>
 		</div>
 	);
 }
