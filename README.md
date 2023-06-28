@@ -1,48 +1,47 @@
-# Supabase Starter
 
-This starter configures Supabase Auth to use cookies, making the user's session available throughout the entire Next.js app - Client Components, Server Components, Route Handlers, Server Actions and Middleware.
+<!-- LOGO -->
+<br />
+<h1>
+<p align="center">
+  <img src="./public/logos/Opengraph.png" alt="Logo" >
+  <!-- <br>The Sound of Blue -->
+</h1>
 
-## Deploy your own
+</p>
+<p align="center">
+  <a href="#about-the-project">About The Project</a> •
+  <a href="#stack">Stack</a> •
+  <a href="#credits">Credits</a>
 
-The Vercel deployment will guide you through creating a Supabase account and project. After installation of the Supabase integration, all relevant environment variables will be set up so that the project is usable immediately after deployment 🚀
+</p>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&integration-ids=oac_jUduyjQgOyzev1fjrW83NYOv)
 
-## How to use
 
-1. Create a [new Supabase project](https://database.new)
-1. Run `npx create-next-app -e with-supabase` to create a Next.js app using the Supabase Starter template
-1. Use `cd` to change into the app's directory
-1. Run `npm install` to install dependencies
-1. Rename `.env.local.example` to `.env.local` and update the values for `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` from [your Supabase project's API settings](https://app.supabase.com/project/_/settings/api)
-1. Run `npm run dev` to start the local development server
+## About The Project
+The Sound of Blue" is a captivating exploration into the complex tapestry of human thought and creativity. This innovative platform invites users to propose two seemingly unrelated phrases, and our AI calculates a 'relevance score' representing its interpretation of their connection. Phrases with the lowest scores — those connections most elusive to AI but meaningful to us — are compiled for users to upvote or downvote, democratically surfacing connections uniquely human. It's a fascinating blend of cognitive science, AI capabilities, and community engagement, offering a novel perspective on the kaleidoscopic ways we, as humans, perceive and connect ideas.
 
-> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
+## Why I Built It
+"The Sound of Blue" was born out of a deep-seated fascination with the intricacies of human cognition and our unique capacity for abstract thought. Inspired by the challenge of unearthing connections that an AI struggles to grasp, I sought to create a space where human imagination and creativity could take center stage. It became a quest to shed light on those elusive, yet meaningful links that are often hidden from AI understanding but are beautifully apparent to us. Leveraging the precision of AI technology, coupled with the power of collective engagement, this platform serves as a testament to human ingenuity and the myriad ways we comprehend and link disparate concepts. It's more than just a game — it's an homage to our ability to weave together the vibrant tapestry of human perception, a celebration of the connections that make us inherently human.
 
-### Create a Supabase client
 
-Check out the [`/app/_examples`](./app/_examples/) folder for an example of creating a Supabase client in:
 
-- [Client Components](./app/_examples/client-component/page.tsx)
-- [Server Components](./app/_examples/server-component/page.tsx)
-- [Route Handlers](./app/_examples/route-handler/route.ts)
-- [Server Actions](./app/_examples/server-action/page.tsx)
 
-### Create `todo` table and seed with data (optional)
 
-Navigate to [your project's SQL Editor](https://app.supabase.com/project/_/sql), click `New query`, paste the contents of the [init.sql](./supabase/migrations/20230618024722_init.sql) file and click `RUN`.
+## Stack
 
-This will create a basic `todos` table, enable Row Level Security (RLS), and write RLS policies enabling `select` and `insert` actions for `authenticated` users.
+Name                          |  Usage
+----------------------------------|------------------------------------------------------------------------------------
+Vercel           |  A versatile platform for static sites and Serverless Functions that enables rapid deployment and seamless scalability
+Next.js            |  A React framework offering server-side rendering and generating static webpages, used as the backbone of our app for efficient performance and optimized SEO
+Supabase                |  An open-source Firebase alternative, providing us with a sql database, crucial for managing our user data and voting system.
+Tailwind CSS                 |  A utility-first CSS framework that allows us to quickly build custom user interfaces without leaving our HTML, ensuring 'The Sound of Blue' is both visually appealing and user-friendly.
+React Table                |  A lightweight, flexible, and extendable datagrid built with React, utilized to effectively manage and display the list of phrase pairs and their respective votes.
 
-To seed your `todos` table with some dummy data, run the contents of the [seed.sql](./supabase/seed.sql) file.
 
-## Feedback and issues
 
-Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
+## Credits
+- Created by Jack Burrus
 
-## More Supabase examples
-
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
-- [Next.js Auth Helpers Docs](https://supabase.com/docs/guides/auth/auth-helpers/nextjs)
+[![GitHub Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jackburrus)
+[![Twitter Badge](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/jackburrus)
+[![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jamesburrus/)
