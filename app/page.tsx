@@ -74,18 +74,17 @@ export default function Index() {
 
 	return (
 		<div className="flex-1 flex relative  flex-col justify-center   w-full ">
-			{/* <Header /> */}
 			<canvas className="absolute w-full h-screen z-[-1]" id="gradient-canvas" data-transition-in />
 
 			<Form {...form}>
 				<form className="items-center flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
-					<div className="bg-white items-center flex flex-col shadow-md mx-4 md:max-w-2xl max-h-44 md:max-h-64  rounded-md p-5 md:p-8">
-						{activeMessage === CONFIRMATION_MESSAGE && <BadgeCheck className="mb-5" size={36} color={'#4caf50'} />}
+					<div className="bg-white items-center flex flex-col overflow-y-scroll shadow-md mx-4 md:max-w-2xl max-h-44 md:max-h-80  rounded-md p-5 md:p-8">
+						{/* {activeMessage === CONFIRMATION_MESSAGE && <BadgeCheck className="mb-5" size={48} color={'#4caf50'} />} */}
 						<p className={`text-xs md:text-base ${activeMessage === REJECTION_MESSAGE && 'text-red-400'} `}>
 							{activeMessage}
 						</p>
 						{activeMessage === CONFIRMATION_MESSAGE && (
-							<Link className="mt-5" href="/leaderboard">
+							<Link className="my-5" href="/leaderboard">
 								<Button className="text-xs ">Check out the leaderboard!</Button>
 							</Link>
 						)}
