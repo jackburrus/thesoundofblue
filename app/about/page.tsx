@@ -52,7 +52,7 @@ export default function About() {
 					</ul>
 				</p>
 				<h1 className="text-xl font-bold w-full justify-start">Credits</h1>
-				<p className="mt-2">
+				<p className="mt-2 text-sm">
 					This project was created by{' '}
 					<a href="https://www.twitter.com/jackburrus" target="_blank" className="underline">
 						Jack Burrus

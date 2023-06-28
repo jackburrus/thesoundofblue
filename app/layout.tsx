@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 		card: 'summary_large_image',
 		title: 'The Sound of Blue',
 		description: siteConfig.description,
-		images: ['https://thesoundofblue.xyz/logos/128.png'],
+		images: ['https://thesoundofblue.xyz/logos/Opengraph.png'],
 		creator: '@jackburrus',
 	},
 	icons: {
