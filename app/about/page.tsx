@@ -28,7 +28,7 @@ export default function About() {
 					<ul className="mt-2">
 						<li className="mt-2">
 							- <span className="font-bold">Think of a Pair:</span> Start by thinking of two words or phrases. They could be as
-							ordinary or as extraordinary as you like! The fun part is finding a unique connection that only you can see.
+							ordinary or as extraordinary as you like!
 						</li>
 						<li className="mt-2">
 							{' '}
@@ -47,7 +47,7 @@ export default function About() {
 						<li className="mt-2">
 							{' '}
 							- <span className="font-bold">Cast Your Votes:</span> Now the real fun begins. You and everyone else can vote on
-							all the special pairs on the list. The ones with the most votes rise to the top.
+							all the special pairs on the list. The ones with the most votes rise to the top using time decay voting.
 						</li>
 					</ul>
 				</p>
