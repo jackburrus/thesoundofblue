@@ -44,13 +44,13 @@ export const metadata: Metadata = {
 		card: 'summary_large_image',
 		title: 'The Sound of Blue',
 		description: siteConfig.description,
-		images: ['/logos/128.png'],
+		images: ['https://thesoundofblue.xyz/logos/128.png'],
 		creator: '@jackburrus',
 	},
 	icons: {
-		icon: '/logos/favicon.ico',
-		shortcut: '/logos/16.png',
-		apple: '/logos/16.png',
+		icon: 'https://thesoundofblue.xyz/logos/favicon.ico',
+		shortcut: 'https://thesoundofblue.xyz/logos/16.png',
+		apple: 'https://thesoundofblue.xyz/logos/16.png',
 	},
 };
 

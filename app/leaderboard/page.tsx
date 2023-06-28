@@ -29,9 +29,6 @@ function calculateScore(phrasePair: PhrasePairWithScore): number {
 	const hoursSinceCreated = (new Date().getTime() - createdAt.getTime()) / 3600000;
 	return netVotes / (hoursSinceCreated + 1); // Add 1 to prevent division by zero
 }
-function sortPhrasePairs(phrasePairs: PhrasePair[]): PhrasePair[] {
-	return phrasePairs.sort((a, b) => calculateScore(b) - calculateScore(a));
-}
 
 function mapVotesToPhrasePairs(votes: VoteTable[], phrasePairs: PhrasePairTable[]) {
 	return phrasePairs.map((phrasePair) => {
@@ -51,6 +48,8 @@ function mapVotesToPhrasePairs(votes: VoteTable[], phrasePairs: PhrasePairTable[
 		};
 	});
 }
+
+export const dynamic = 'force-dynamic';
 
 export default async function LeaderBoard() {
 	const supabase = createServerComponentClient({ cookies });
